@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Bus Ticket</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px;
+
+            font-family: Arial, sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(99, 102, 241, 0.25),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 90% 90%,
+                    rgba(6, 182, 212, 0.20),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #020617,
+                    #0f172a,
+                    #111827
+                );
+        }
+
+        .ticket {
+            width: 600px;
+            max-width: 100%;
+
+            padding: 35px;
+
+            border-radius: 25px;
+
+            background: rgba(15, 23, 42, 0.90);
+
+            border: 1px solid
+                rgba(148, 163, 184, 0.20);
+
+            box-shadow:
+                0 30px 80px
+                rgba(0, 0, 0, 0.45);
+
+            color: white;
+        }
+
+        .ticket-header {
+            text-align: center;
+
+            padding-bottom: 25px;
+
+            border-bottom: 1px dashed
+                rgba(148, 163, 184, 0.30);
+        }
+
+        .ticket-header h1 {
+            font-size: 32px;
+
+            background: linear-gradient(
+                90deg,
+                #38bdf8,
+                #6366f1,
+                #a855f7
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .success {
+            margin-top: 10px;
+
+            color: #4ade80;
+
+            font-weight: 600;
+        }
+
+        .ticket-body {
+            padding: 25px 0;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+
+            padding: 13px 0;
+
+            border-bottom: 1px solid
+                rgba(148, 163, 184, 0.08);
+        }
+
+        .label {
+            color: #94a3b8;
+        }
+
+        .value {
+            color: #f8fafc;
+
+            font-weight: 600;
+        }
+
+        .bus-name {
+            margin-bottom: 20px;
+
+            text-align: center;
+
+            font-size: 21px;
+
+            color: #38bdf8;
+        }
+
+        .download-btn {
+            width: 100%;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            background: linear-gradient(
+                135deg,
+                #38bdf8,
+                #6366f1
+            );
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            opacity: 0.9;
+
+            transform: translateY(-2px);
+        }
+
+        @media print {
+
+            body {
+                background: white;
+            }
+
+            .ticket {
+                box-shadow: none;
+
+                border: 1px solid #ddd;
+
+                color: black;
+            }
+
+            .download-btn {
+                display: none;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="ticket">
+
+    <div class="ticket-header">
+
+        <h1>🎫 Bus Ticket</h1>
+
+        <p class="success">
+            ✓ Booking Confirmed
+        </p>
+
+    </div>
+
+
+    <div class="ticket-body">
+
+        <h2 class="bus-name">
+            🚌 {{ bus.name }}
+        </h2>
+
+
+        <div class="row">
+            <span class="label">Passenger Name</span>
+            <span class="value">{{ name }}</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Phone</span>
+            <span class="value">{{ phone }}</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Email</span>
+            <span class="value">{{ email }}</span>
+        </div>
+
+        <div class="row">
+            <span class="label">From</span>
+            <span class="value">{{ bus.departure }}</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Destination</span>
+            <span class="value">{{ bus.destinations }}</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Travel Date</span>
+            <span class="value">{{ bus.avail_date }}</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Travel Time</span>
+            <span class="value">{{ bus.avail_time }}</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Price</span>
+            <span class="value">{{ bus.price }}</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Status</span>
+            <span class="value">Confirmed ✓</span>
+        </div>
+
+    </div>
+
+
+    <button
+        class="download-btn"
+        onclick="window.print()">
+
+        📄 Download Ticket as PDF
+
+    </button>
+
+</div>
+
+</body>
+
+</html>

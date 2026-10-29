@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Available-Buses!</title>
+    <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    /* =========================
+       GLOBAL
+    ========================= */
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        min-height: 100vh;
+        padding: 50px 20px;
+
+        font-family: 'Inter', sans-serif;
+        color: #f8fafc;
+
+        background:
+            radial-gradient(
+                circle at 10% 10%,
+                rgba(99, 102, 241, 0.20),
+                transparent 30%
+            ),
+            radial-gradient(
+                circle at 90% 90%,
+                rgba(6, 182, 212, 0.16),
+                transparent 30%
+            ),
+            linear-gradient(
+                135deg,
+                #020617,
+                #0f172a 50%,
+                #111827
+            );
+    }
+
+
+    /* =========================
+       MAIN TITLE
+    ========================= */
+
+    h1 {
+        text-align: center;
+
+        font-size: 42px;
+        font-weight: 800;
+        letter-spacing: -1.5px;
+
+        background: linear-gradient(
+            90deg,
+            #38bdf8,
+            #6366f1,
+            #a855f7
+        );
+
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        margin-bottom: 8px;
+    }
+
+
+    /* =========================
+       BOOKING DETAILS CARD
+    ========================= */
+
+    .booking-details {
+        width: min(900px, 100%);
+        margin: 0 auto;
+
+        padding: 35px;
+
+        border-radius: 24px;
+
+        background: rgba(15, 23, 42, 0.72);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+
+        border: 1px solid rgba(148, 163, 184, 0.15);
+
+        box-shadow:
+            0 25px 70px rgba(0, 0, 0, 0.40),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+        position: relative;
+        overflow: hidden;
+    }
+
+
+    /* Top glow */
+
+    .booking-details::before {
+        content: "";
+
+        position: absolute;
+
+        width: 250px;
+        height: 250px;
+
+        top: -150px;
+        right: -100px;
+
+        border-radius: 50%;
+
+        background: rgba(99, 102, 241, 0.22);
+
+        filter: blur(45px);
+    }
+
+
+    .booking-details h4 {
+        position: relative;
+
+        text-align: center;
+
+        margin-bottom: 28px;
+
+        color: #94a3b8;
+
+        font-size: 12px;
+        font-weight: 700;
+
+        letter-spacing: 4px;
+        text-transform: uppercase;
+    }
+
+
+    /* =========================
+       BOOKING INFORMATION
+    ========================= */
+
+    .booking-details p {
+        position: relative;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 14px 18px;
+        margin: 8px 0;
+
+        border-radius: 12px;
+
+        color: #cbd5e1;
+
+        font-size: 14px;
+
+        background: rgba(30, 41, 59, 0.55);
+
+        border: 1px solid rgba(148, 163, 184, 0.08);
+
+        transition: 0.25s ease;
+    }
+
+
+    .booking-details p:hover {
+        transform: translateX(5px);
+
+        background: rgba(51, 65, 85, 0.65);
+
+        border-color: rgba(99, 102, 241, 0.35);
+    }
+
+
+    .booking-details p::first-letter {
+        color: #fff;
+    }
+
+
+    /* =========================
+       AVAILABLE BUS TITLE
+    ========================= */
+
+    h2 {
+        width: min(1100px, 100%);
+
+        margin: 55px auto 25px;
+
+        font-size: 25px;
+        font-weight: 700;
+
+        display: flex;
+        align-items: center;
+
+        gap: 12px;
+
+        color: #f8fafc;
+    }
+
+
+    h2::before {
+        content: "";
+
+        width: 5px;
+        height: 30px;
+
+        border-radius: 10px;
+
+        background: linear-gradient(
+            180deg,
+            #38bdf8,
+            #6366f1
+        );
+
+        box-shadow:
+            0 0 15px rgba(99, 102, 241, 0.7);
+    }
+
+
+    /* =========================
+       BUS GRID
+    ========================= */
+
+    .busbox-avail {
+        width: min(1100px, 100%);
+
+        margin: 0 auto;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(auto-fit, minmax(280px, 1fr));
+
+        gap: 22px;
+    }
+
+
+    /* =========================
+       BUS CARD
+    ========================= */
+
+    .busbox-card {
+        position: relative;
+
+        padding: 26px;
+
+        border-radius: 20px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(30, 41, 59, 0.92),
+                rgba(15, 23, 42, 0.88)
+            );
+
+        border: 1px solid rgba(148, 163, 184, 0.13);
+
+        box-shadow:
+            0 20px 40px rgba(0, 0, 0, 0.30),
+            inset 0 1px 0 rgba(255,255,255,0.04);
+
+        overflow: hidden;
+
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease,
+            border-color 0.3s ease;
+    }
+
+
+    /* Bus card glow */
+
+    .busbox-card::before {
+        content: "";
+
+        position: absolute;
+
+        width: 170px;
+        height: 170px;
+
+        top: -90px;
+        right: -80px;
+
+        border-radius: 50%;
+
+        background: rgba(59, 130, 246, 0.15);
+
+        filter: blur(30px);
+
+        transition: 0.3s ease;
+    }
+
+
+    .busbox-card:hover {
+        transform: translateY(-8px);
+
+        border-color:
+            rgba(99, 102, 241, 0.55);
+
+        box-shadow:
+            0 30px 60px rgba(0, 0, 0, 0.45),
+            0 0 30px rgba(99, 102, 241, 0.12);
+    }
+
+
+    .busbox-card:hover::before {
+        background: rgba(99, 102, 241, 0.30);
+    }
+
+
+    /* =========================
+       BUS CARD TEXT
+    ========================= */
+
+    .busbox-card p {
+        position: relative;
+        z-index: 2;
+
+        margin: 14px 0;
+
+        color: #94a3b8;
+
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+
+    .busbox-card p:first-child {
+        margin-bottom: 22px;
+
+        color: #f8fafc;
+
+        font-size: 19px;
+        font-weight: 700;
+    }
+
+
+    .busbox-card p:first-child::before {
+        content: "🚌";
+
+        margin-right: 10px;
+    }
+
+
+    .busbox-card p:nth-child(2) {
+        color: #cbd5e1;
+    }
+
+
+    .busbox-card p:nth-child(2)::before {
+        content: "📍";
+
+        margin-right: 8px;
+    }
+
+
+    .busbox-card p:nth-child(3)::before {
+        content: "📅";
+
+        margin-right: 8px;
+    }
+
+
+    .busbox-card p:nth-child(4)::before {
+        content: "⏰";
+
+        margin-right: 8px;
+    }
+
+
+    /* =========================
+       EMPTY BUS STATE
+    ========================= */
+
+    .no-buses {
+        grid-column: 1 / -1;
+
+        padding: 70px 30px;
+
+        text-align: center;
+
+        border-radius: 22px;
+
+        background: rgba(15, 23, 42, 0.65);
+
+        border: 1px dashed
+            rgba(148, 163, 184, 0.25);
+
+        color: #94a3b8;
+    }
+
+
+    .no-buses p {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+
+    .no-buses p::before {
+        content: "🚌";
+
+        display: block;
+
+        margin-bottom: 15px;
+
+        font-size: 45px;
+
+        opacity: 0.65;
+    }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 650px) {
+
+        body {
+            padding: 30px 15px;
+        }
+
+        h1 {
+            font-size: 30px;
+        }
+
+        .booking-details {
+            padding: 22px;
+            border-radius: 18px;
+        }
+
+        .booking-details p {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+        }
+
+        h2 {
+            font-size: 21px;
+            margin-top: 40px;
+        }
+
+        .busbox-avail {
+            grid-template-columns: 1fr;
+        }
+
+        .busbox-card {
+            padding: 22px;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="booking-details">
+        <h1>Available Buses!</h1>
+        <h4>Booking Details</h4>
+        <p>Name: {{ name }}</p>
+        <p>Phone: {{ phone }}</p>
+        <p>Email: {{ email }}</p>
+        <p>City: {{ city }}</p>
+        <p>Destination: {{ destinations }}</p>
+        <p>Booking-Date: {{ booking_date }}</p>
+        <p>Booking-Time: {{ booking_time }}</p>
+        <br><br>
+    </div>
+
+
+    <h2>Available Buses for you!!!</h2>
+    <div class="busbox-avail">
+        {% for bus in buses %}
+
+        <div class="busbox-card">
+            <p>Bus id:{{ bus.id }}</p>
+            <p>Bus Name: {{ bus.name }}</p>
+            <p>City: {{ bus.departure }}</p>
+            <p>Destination: {{ bus.destinations }}</p>
+            <p>Price:{{ bus.price }}</p>
+            <p>Available_Date: {{ bus.avail_date }}</p>
+            <p>Available_Time: {{ bus.avail_time }}</p>
+            <form method="POST" action="{% url 'ticket' %}">
+                {% csrf_token %}
+                <input type="hidden" name="bus_id" value="{{ bus.id }}">
+
+                <input type="hidden" name="name" value="{{ name }}">
+                <input type="hidden" name="phone" value="{{ phone }}">
+                <input type="hidden" name="email" value="{{ email }}">
+                <input type="hidden" name="city" value="{{ city }}">
+                <input type="hidden" name="destinations" value="{{ destinations }}">
+                <input type="hidden" name="price" value="{{ price }}">
+                <input type="hidden" name="booking_date" value="{{ booking_date }}">
+                <input type="hidden" name="booking_time" value="{{ booking_time }}">
+
+                <button type="submit">Book Now</button>
+            </form>
+        </div>
+        {% empty %}
+            <div class="no-buses">
+                <p>No Buses Available!!!</p>
+            </div>
+        {% endfor %}
+
+    </div>
+
+</body>
+</html>

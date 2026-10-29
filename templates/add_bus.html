@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add-Bus</title>
+</head>
+<body>
+
+    <div class="bus_box">
+        <form method="POST">
+            {% csrf_token %}
+            <label>Bus Name</label>
+            <input type="text" name="name" placeholder="">
+            <br><br>
+            <label>Departure</label>
+            <input type="text" name="departure" placeholder="Enter city name">
+            <br><br>
+            <label>Destination</label>
+            <input type="text" name="destination" placeholder="Enter destination city">
+            <br><br>
+            <label>Price</label>
+            <input type="number" name="price" placeholder="Enter ticket price">
+            <br><br>
+            <label>Available-Time</label>
+            <input type="time" name="avail_time" placeholder="">
+            <br><br>
+            <label>Available-Date</label>
+            <input type="date" name="avail_date" placeholder="">
+            <br><br>
+            <button type="submit">Add Bus</button>
+        </form>
+    </div>
+
+</body>
+</html>

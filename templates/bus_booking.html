@@ -1,0 +1,347 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bus Booking</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family: 'Inter', sans-serif;
+    color: white;
+
+    /* FULL BACKGROUND IMAGE */
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.40),
+            rgba(0, 0, 0, 0.65)
+        ),
+        url("{% static 'img_4.png' %}");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 35px 20px 50px;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+
+/* =========================
+   HEADING
+========================= */
+
+body > h1 {
+    margin-bottom: 28px;
+
+    font-size: 34px;
+    font-weight: 800;
+
+    color: #ffffff;
+
+    text-align: center;
+
+    text-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+body > h1::after {
+    content: "";
+
+    display: block;
+
+    width: 60px;
+    height: 3px;
+
+    margin: 12px auto 0;
+
+    background: #e50914;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 15px rgba(229, 9, 20, 0.8);
+}
+
+
+/* =========================
+   LANDSCAPE GLASS FORM
+========================= */
+
+.bb-box {
+    width: 760px;
+    max-width: 95vw;
+
+    padding: 32px 38px;
+
+    background: rgba(0, 0, 0, 0.28);
+
+    border: 1px solid rgba(255, 255, 255, 0.24);
+
+    border-radius: 20px;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.55),
+        inset 0 1px 1px rgba(255, 255, 255, 0.12);
+}
+
+
+/* =========================
+   FORM GRID
+========================= */
+
+.bb-box form {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    column-gap: 28px;
+
+    row-gap: 4px;
+}
+
+
+/* =========================
+   LABEL
+========================= */
+
+.bb-box label {
+    display: block;
+
+    margin-top: 10px;
+    margin-bottom: 7px;
+
+    color: #eeeeee;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    letter-spacing: 0.3px;
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.bb-box input {
+    width: 100%;
+    height: 43px;
+
+    padding: 10px 13px;
+
+    margin-bottom: 10px;
+
+    border: 1px solid rgba(255, 255, 255, 0.22);
+
+    border-radius: 8px;
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: white;
+
+    font-family: 'Inter', sans-serif;
+
+    font-size: 13px;
+
+    transition: all 0.25s ease;
+}
+
+.bb-box input::placeholder {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.bb-box input:hover {
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+.bb-box input:focus {
+    background: rgba(255, 255, 255, 0.13);
+
+    border-color: #e50914;
+
+    box-shadow:
+        0 0 0 3px rgba(229, 9, 20, 0.12);
+}
+
+
+/* DATE + TIME */
+
+.bb-box input[type="date"],
+.bb-box input[type="time"] {
+    color-scheme: dark;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.bb-box button {
+    grid-column: 1 / -1;
+
+    width: 100%;
+
+    height: 48px;
+
+    margin-top: 20px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff303a,
+            #e50914,
+            #b20710
+        );
+
+    color: white;
+
+    font-family: 'Inter', sans-serif;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    letter-spacing: 0.4px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px rgba(229, 9, 20, 0.30);
+
+    transition: all 0.3s ease;
+}
+
+.bb-box button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 15px 35px rgba(229, 9, 20, 0.50);
+
+    filter: brightness(1.08);
+}
+
+.bb-box button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 750px) {
+
+    body {
+        padding: 30px 15px 40px;
+    }
+
+    .bb-box {
+        width: 95vw;
+
+        padding: 28px 25px;
+    }
+
+    .bb-box form {
+        column-gap: 20px;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 560px) {
+
+    body {
+        padding: 25px 15px 40px;
+
+        background-attachment: scroll;
+    }
+
+    body > h1 {
+        font-size: 27px;
+
+        margin-bottom: 20px;
+    }
+
+    .bb-box {
+        width: 100%;
+
+        padding: 25px 20px;
+
+        border-radius: 16px;
+
+        background: rgba(0, 0, 0, 0.38);
+    }
+
+    /* One column on mobile */
+    .bb-box form {
+        grid-template-columns: 1fr;
+
+        column-gap: 0;
+    }
+
+    .bb-box button {
+        grid-column: auto;
+    }
+}
+    </style>
+</head>
+<body>
+    <h1>Bus Booking</h1>
+    <div class="bb-box">
+        <form method="POST">
+            {% csrf_token %}
+            <label for="Name">Name</label>
+            <input type="text" name="name" placeholder="Enter your Name">
+            <label for="Phone">Phone</label>
+            <input type="tel" name="phone" placeholder="Enter your Phone-Number">
+            <label for="email">Email-id</label>
+            <input type="email" name="email" placeholder="Enter your Email-id">
+            <label for="city">City</label>
+            <input type="text" name="city" placeholder="Enter your City">
+            <label for="destination">Destination</label>
+            <input type="text" name="destination" placeholder="Enter your destination">
+            <label for="passengers">Passengers</label>
+            <input type="number" min="1" max="10" name="passengers" placeholder="How many passengers travel">
+            <label for="booking_date">Booking-Date</label>
+            <input type="date" name="booking_date" placeholder="Enter your Booking date">
+            <label for="booking_time">Booking-Time</label>
+            <input type="time" name="booking_time" placeholder="Enter your Booking time">
+            <button type="submit">Search Buses</button>
+
+        </form>
+    </div>
+
+</body>
+</html>
