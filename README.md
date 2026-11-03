@@ -58,7 +58,7 @@ Django_Project/
 ### 1. Clone the Repository
 
 ```bash
-git 
+git https://github.com/rohithrohith11/Bus_Booking_Management_System.git
 ```
 
 ### 2. Navigate to the Project Folder
@@ -106,24 +106,6 @@ Open your browser and visit:
 http://127.0.0.1:8000/
 ```
 
-## 📸 Project Screenshots
-
-Add your project screenshots below to showcase the application interface.
-
-| Login Page | User Registration |
-|---|---|
-| Add login screenshot here | Add registration screenshot here |
-
-| Bus Search Page | Ticket Booking Page |
-|---|---|
-| Add bus search screenshot here | Add booking screenshot here |
-
-| Booking Confirmation | PDF Ticket |
-|---|---|
-| Add confirmation screenshot here | Add PDF ticket screenshot here |
-
-*You can upload your screenshots into a folder named `screenshots` in your GitHub repository.*
-
 ## 🔮 Future Enhancements
 
 The following features are planned for future development:
@@ -147,7 +129,7 @@ The following features are planned for future development:
 **ROHITH S**
 
 - GitHub: https://github.com/rohithrohith11
-- LinkedIn: linkedin.com/in/rohith-s-183382289
+- LinkedIn: [Connect with ME!!!] (linkedin.com/in/rohith-s-183382289)
 
 ---
 
